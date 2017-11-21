@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>dubbo-demo</artifactId>
+        <groupId>priv.chenkai</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>producer</artifactId>
+
+    <build>
+        <finalName>consumer</finalName>
+        <resources>
+            <resource>
+                <filtering>true</filtering>
+                <directory>${basedir}/src/main/resources</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.0.2</version><!--$NO-MVN-MAN-VER$ -->
+                <configuration>
+                    <encoding>utf-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <meminitial>128m</meminitial>
+                    <maxmem>512m</maxmem>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.4.6.v20170531</version>
+                <configuration>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <stopKey>shutdown</stopKey>
+                    <stopPort>8099</stopPort>
+                    <reload>manual</reload>
+                    <httpConnector>
+                        <port>8800</port>
+                    </httpConnector>
+                    <webApp>
+                        <contextPath>/</contextPath>
+                    </webApp>
+                    <systemProperties>
+                        <systemProperty>
+                            <name>MAVEN_OPTS</name>
+                            <value>"-Xms512m -Xmx1024m -XX:MaxPermSize=384m"</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>JVM-ARG</name>
+                            <value>"-XX:MaxPermSize=386m"</value>
+                        </systemProperty>
+                        <systemProperty>
+                            <name>JAVA_OPTS</name>
+                            <value>"-Xms512m -Xmx1024m"</value>
+                        </systemProperty>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
