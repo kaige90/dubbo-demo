@@ -14,7 +14,7 @@
        	 http://www.springframework.org/schema/task/spring-task-3.0.xsd ">
 
      <dubbo:application name="consumer"/>
-     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+     <dubbo:registry address="zookeeper://192.168.1.230:2181"/>
      <dubbo:protocol name="dubbo" port="28820"/>
 	 <!-- <producer:monitor protocol="registry"/> -->
      <dubbo:provider timeout="60000"/>

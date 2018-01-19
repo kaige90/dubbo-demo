@@ -15,11 +15,11 @@
        	 http://www.springframework.org/schema/task/spring-task-3.0.xsd ">
 
      <dubbo:application name="producer"/>
-     <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+     <dubbo:registry address="zookeeper://192.168.1.230:2181"/>
      <dubbo:protocol name="dubbo" port="28808"/>
 	 <!-- <producer:monitor protocol="registry"/> -->
-     <dubbo:provider timeout="60000"/>
-	 <dubbo:consumer timeout="60000"/>
+     <dubbo:provider timeout="6000"/>
+	 <dubbo:consumer timeout="6000"/>
 
      <!-- 生产api -->
      <bean id="studentAPIImpl" class="priv.chenkai.producer.server.StudentAPIImpl"/>

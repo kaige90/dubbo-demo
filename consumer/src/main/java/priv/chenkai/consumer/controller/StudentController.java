@@ -1,5 +1,6 @@
 package priv.chenkai.consumer.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,5 +21,13 @@ public class StudentController {
     public List<StudentBo> getList(){
         List<StudentBo> students = studentAPI.getList();
         return students;
+    }
+
+    @GetMapping("/api/test")
+    public JSONObject test(){
+        JSONObject json = new JSONObject();
+        json.put("result",0);
+        json.put("message","测试成功！");
+        return json;
     }
 }
